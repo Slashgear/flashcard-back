@@ -1,5 +1,5 @@
 # Flashcard - BACK
-
+[![Build Status](https://travis-ci.org/Slashgear/flashcard-back.svg?branch=master)](https://travis-ci.org/Slashgear/flashcard-back)
 
 ## Start Dev PostgreSQL
 
