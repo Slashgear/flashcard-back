@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <Deck id="0" name="Test"/>
+    <Deck id="1" name="Antoine"/>
+    <Deck id="2" name="Martin"/>
+    <Deck id="3" name="Test"/>
+    <Deck id="4" name="Test"/>
+    <Deck id="5" name="Test"/>
+</dataset>

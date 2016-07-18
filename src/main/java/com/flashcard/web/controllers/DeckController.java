@@ -25,11 +25,9 @@ public class DeckController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Deck> findById(@PathVariable("id") Long id) {
         Deck deck = deckService.find(id);
-        ResponseEntity<Deck> responseEntity;
+        ResponseEntity<Deck> responseEntity = new ResponseEntity<>(HttpStatus.NOT_FOUND);
         if (deck != null) {
             responseEntity = new ResponseEntity<>(deck, HttpStatus.OK);
-        } else {
-            responseEntity = new ResponseEntity<Deck>(HttpStatus.NOT_FOUND);
         }
         return responseEntity;
     }
