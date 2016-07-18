@@ -13,7 +13,27 @@ public class CardServiceImpl implements CardService {
     private CardRepository cardRepository;
 
     @Override
-    public Iterable<Card> listAll() {
+    public Iterable<Card> findAll() {
         return cardRepository.findAll();
+    }
+
+    @Override
+    public boolean exists(Long id) {
+        return cardRepository.exists(id);
+    }
+
+    @Override
+    public Card find(Long id) {
+        return cardRepository.findOne(id);
+    }
+
+    @Override
+    public Card save(Card card) {
+        return cardRepository.save(card);
+    }
+
+    @Override
+    public void delete(Long id) {
+        cardRepository.delete(id);
     }
 }
