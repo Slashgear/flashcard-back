@@ -16,7 +16,7 @@ public class Card {
 
     private String question;
 
-    @OneToMany
-    private List<Answer> answer = new ArrayList<>();
+    @ElementCollection
+    private List<String> answer = new ArrayList<>();
 
 }
