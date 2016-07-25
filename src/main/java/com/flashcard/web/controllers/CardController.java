@@ -33,6 +33,11 @@ public class CardController {
         return responseEntity;
     }
 
+    @RequestMapping(value = "/deck/{deckId}", method = RequestMethod.GET)
+    public ResponseEntity<Iterable<Card>> findByDeck(@PathVariable("deckId") Long deckId) {
+        return new ResponseEntity<>(cardService.findAllByDeckId(deckId), HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Card> create(@RequestBody Card card) {
         ResponseEntity<Card> responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);

@@ -1,7 +1,9 @@
 package com.flashcard.web.controllers;
 
 import com.flashcard.web.FlashcardBackApplicationTests;
+import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -9,12 +11,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@DatabaseSetup("classpath:initDb/deck.xml")
+@DatabaseTearDown(value = "classpath:initDb/deck.xml", type = DatabaseOperation.DELETE_ALL)
 public class DeckControllerTest extends FlashcardBackApplicationTests {
 
     private static final String URL = "/api/deck";
 
     @Test
-    @DatabaseSetup("classpath:initDb/deck.xml")
     public void findAll() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get(URL).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
@@ -22,7 +25,6 @@ public class DeckControllerTest extends FlashcardBackApplicationTests {
     }
 
     @Test
-    @DatabaseSetup("classpath:initDb/deck.xml")
     public void findById() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get(URL + "/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
@@ -57,7 +59,6 @@ public class DeckControllerTest extends FlashcardBackApplicationTests {
     }
 
     @Test
-    @DatabaseSetup("classpath:initDb/deck.xml")
     public void delete() throws Exception {
         mvc.perform(MockMvcRequestBuilders.delete(URL + "/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
