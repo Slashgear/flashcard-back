@@ -39,7 +39,7 @@ public class FlashcardBackApplication extends WebMvcConfigurerAdapter {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET","POST","PUT", "DELETE", "OPTION");
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS");
     }
 
     private ApiInfo apiInfo() {

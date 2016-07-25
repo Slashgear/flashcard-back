@@ -1,7 +1,9 @@
 package com.flashcard.web.controllers;
 
 import com.flashcard.web.FlashcardBackApplicationTests;
+import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.DatabaseTearDown;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -9,16 +11,24 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@DatabaseSetup("classpath:initDb/card.xml")
+@DatabaseTearDown(value = "classpath:initDb/card.xml", type = DatabaseOperation.DELETE_ALL)
 public class CardControllerTest extends FlashcardBackApplicationTests {
 
     private static final String URL = "/api/card";
 
     @Test
-    @DatabaseSetup("classpath:initDb/card.xml")
     public void findAll() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get(URL).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andExpect(content().json(getJsonResourceAsString("json/output/card/findAll.json")));
+    }
+
+    @Test
+    public void findAllByDeckId() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get(URL + "/deck/10").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().json(getJsonResourceAsString("json/output/card/findAllByDeckId.json")));
     }
 
     @Test
@@ -56,7 +66,6 @@ public class CardControllerTest extends FlashcardBackApplicationTests {
     }
 
     @Test
-    @DatabaseSetup("classpath:initDb/card.xml")
     public void delete() throws Exception {
         mvc.perform(MockMvcRequestBuilders.delete(URL + "/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());

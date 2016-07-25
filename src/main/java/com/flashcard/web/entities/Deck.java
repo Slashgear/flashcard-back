@@ -1,14 +1,15 @@
 package com.flashcard.web.entities;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Data
 @Getter
+@Setter
 public class Deck {
 
     @Id
@@ -17,6 +18,7 @@ public class Deck {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "deck")
+    @JsonManagedReference
     private List<Card> cards;
 }

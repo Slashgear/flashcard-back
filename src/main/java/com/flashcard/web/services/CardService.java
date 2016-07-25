@@ -11,5 +11,7 @@ public interface CardService {
 
     Iterable<Card> findAll();
 
+    Iterable<Card> findAllByDeckId(Long deckId);
+
     boolean exists(Long id);
 }

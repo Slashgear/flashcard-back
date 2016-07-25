@@ -18,6 +18,11 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    public Iterable<Card> findAllByDeckId(Long deckId) {
+        return cardRepository.findByDeck_Id(deckId);
+    }
+
+    @Override
     public boolean exists(Long id) {
         return cardRepository.exists(id);
     }

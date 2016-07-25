@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <Card id="0" question="question0"/>
-    <Card id="1" question="question1"/>
-    <Card id="2" question="question2"/>
-    <Card id="3" question="question3"/>
-    <Card id="4" question="question4"/>
-    <Card id="5" question="question5"/>
+    <Deck id="10" name="Test"/>
+    <Card id="0" question="question0" deck_id="10"/>
+    <Card id="1" question="question1" deck_id="10"/>
+    <Card id="2" question="question2" deck_id="10"/>
+    <Card id="3" question="question3" deck_id="10"/>
+    <Card id="4" question="question4" deck_id="10"/>
+    <Card id="5" question="question5" deck_id="10"/>
+    <Deck/>
+    <Card/>
 </dataset>
