@@ -1,0 +1,14 @@
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+
+  status:
+    project:
+      default:
+        target: 95%
+        if_no_uploads: error
+
+    changes: true
+  ignore:
+        - "flashcard-back/src/main/java/com/flashcard/web/entities/*"
