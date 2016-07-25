@@ -6,9 +6,14 @@ coverage:
   status:
     project:
       default:
-        target: 95%
+        target: 90%
         if_no_uploads: error
+
+   patch:
+        default:
+          target: 90%
+          if_no_uploads: error
 
     changes: true
   ignore:
-        - "flashcard-back/src/main/java/com/flashcard/web/entities/*"
+        - "src/main/java/com/flashcard/web/entities/*"
