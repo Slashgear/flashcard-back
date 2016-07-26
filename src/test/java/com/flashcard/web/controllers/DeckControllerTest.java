@@ -16,6 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class DeckControllerTest extends FlashcardBackApplicationTests {
 
     private static final String URL = "/api/deck";
+    private static final String CARD_API = "/api/card";
 
     @Test
     public void findAll() throws Exception {
@@ -62,6 +63,8 @@ public class DeckControllerTest extends FlashcardBackApplicationTests {
     public void delete() throws Exception {
         mvc.perform(MockMvcRequestBuilders.delete(URL + "/1").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful());
+        mvc.perform(MockMvcRequestBuilders.delete(CARD_API + "/1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().is4xxClientError());
         mvc.perform(MockMvcRequestBuilders.delete(URL + "/1000").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
