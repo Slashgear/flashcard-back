@@ -16,7 +16,7 @@ public class Deck {
 
     private String name;
 
-    @OneToMany(mappedBy = "deck")
+    @OneToMany(mappedBy = "deck", cascade = CascadeType.REMOVE)
     @JsonManagedReference
     private List<Card> cards;
 }

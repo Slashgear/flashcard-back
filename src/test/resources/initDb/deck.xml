@@ -6,5 +6,6 @@
     <Deck id="3" name="Test"/>
     <Deck id="4" name="Test"/>
     <Deck id="5" name="Test"/>
+    <Card id="1" question="Test" deck_id="1"/>
     <Deck/>
 </dataset>
